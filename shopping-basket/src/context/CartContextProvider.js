@@ -18,56 +18,60 @@ const CartReducer = (state, action) => {
       return {
         ...state,
         selectedItems: [...state.selectedItems],
-      }
-      case "REMOVE-ITEM":{
-        const newSelectedItems=state.selectedItems.filter(item => item.id !== action.payload.id)
-        return{
-          ...state,
-          selectedItems :[...newSelectedItems]
-        }
-      }
-      case "INCREASE":{
-        const indexI=state.selectedItems.findeIndex(item => item.id === action.payload.id)
-        state.selectedItems[indexI].quantity++;
-        return{
-          ...state,
-          
-        }
-      }
-      case "DECREASE":{
-        const indexD=state.selectedItems.findeIndex(item => item.id === action.payload.id)
-        state.selectedItems[indexD].quantity--;
-        return{
-          ...state,
-          
-        }
-      }
-      case "CHECKOUT":{
-        return{
-          selectedItems:[],
-          itemCounter:0,
-          total:0,
-          checkOut:true
-        }
-      }
-      case "CLEAR":{
-        return{
-          selectedItems:[],
-          itemCounter:0,
-          total:0,
-          checkOut:false
-          
-        }
-
-      }
+      };
+    case "REMOVE-ITEM": {
+      const newSelectedItems = state.selectedItems.filter(
+        (item) => item.id !== action.payload.id
+      );
+      return {
+        ...state,
+        selectedItems: [...newSelectedItems],
+      };
+    }
+    case "INCREASE": {
+      const indexI = state.selectedItems.findeIndex(
+        (item) => item.id === action.payload.id
+      );
+      state.selectedItems[indexI].quantity++;
+      return {
+        ...state,
+      };
+    }
+    case "DECREASE": {
+      const indexD = state.selectedItems.findeIndex(
+        (item) => item.id === action.payload.id
+      );
+      state.selectedItems[indexD].quantity--;
+      return {
+        ...state,
+      };
+    }
+    case "CHECKOUT": {
+      return {
+        selectedItems: [],
+        itemCounter: 0,
+        total: 0,
+        checkOut: true,
+      };
+    }
+    case "CLEAR": {
+      return {
+        selectedItems: [],
+        itemCounter: 0,
+        total: 0,
+        checkOut: false,
+      };
+    }
     default:
-      return state; 
+      return state;
   }
 };
-const CartContextProvider = () => {
+export const CartContext = createContext();
+const CartContextProvider = ({children}) => {
   const [state, dispatch] = useReducer(CartReducer, initialstate);
-  const cart = createContext();
-  return <div></div>;
+  return <CartContext.Provider value={{state:state,dispatch:dispatch}}>
+    {children}
+  </CartContext.Provider>;
 };
 
 export default CartContextProvider;
