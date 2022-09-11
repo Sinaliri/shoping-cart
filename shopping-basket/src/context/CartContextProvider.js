@@ -7,6 +7,7 @@ const initialstate = {
   total: 0,
 };
 const CartReducer = (state, action) => {
+  console.log(state)
   switch (action.type) {
     case "ADD-ITEM":
       if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
@@ -29,7 +30,7 @@ const CartReducer = (state, action) => {
       };
     }
     case "INCREASE": {
-      const indexI = state.selectedItems.findeIndex(
+      const indexI = state.selectedItems.findIndex(
         (item) => item.id === action.payload.id
       );
       state.selectedItems[indexI].quantity++;
@@ -38,7 +39,7 @@ const CartReducer = (state, action) => {
       };
     }
     case "DECREASE": {
-      const indexD = state.selectedItems.findeIndex(
+      const indexD = state.selectedItems.findIndex(
         (item) => item.id === action.payload.id
       );
       state.selectedItems[indexD].quantity--;
