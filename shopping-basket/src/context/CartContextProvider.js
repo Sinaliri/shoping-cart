@@ -6,8 +6,15 @@ const initialstate = {
   checkOut: false,
   total: 0,
 };
+const sumItems = (items) => {
+  const ItemCounter = items.reduce((total, product) => total + product.quantity, 0);
+  const total = items
+    .reduce((total, product) => total + product.price * product.quantity, 0)
+    .toFixed(2);
+  return { ItemCounter, total };
+};
 const CartReducer = (state, action) => {
-  console.log(state)
+  console.log(state);
   switch (action.type) {
     case "ADD-ITEM":
       if (!state.selectedItems.find((item) => item.id === action.payload.id)) {
@@ -19,6 +26,7 @@ const CartReducer = (state, action) => {
       return {
         ...state,
         selectedItems: [...state.selectedItems],
+        ...sumItems(state.selectedItems),
       };
     case "REMOVE-ITEM": {
       const newSelectedItems = state.selectedItems.filter(
@@ -27,6 +35,7 @@ const CartReducer = (state, action) => {
       return {
         ...state,
         selectedItems: [...newSelectedItems],
+        ...sumItems(state.selectedItems),
       };
     }
     case "INCREASE": {
@@ -36,6 +45,7 @@ const CartReducer = (state, action) => {
       state.selectedItems[indexI].quantity++;
       return {
         ...state,
+        ...sumItems(state.selectedItems),
       };
     }
     case "DECREASE": {
@@ -45,6 +55,7 @@ const CartReducer = (state, action) => {
       state.selectedItems[indexD].quantity--;
       return {
         ...state,
+        ...sumItems(state.selectedItems),
       };
     }
     case "CHECKOUT": {
@@ -68,11 +79,13 @@ const CartReducer = (state, action) => {
   }
 };
 export const CartContext = createContext();
-const CartContextProvider = ({children}) => {
+const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(CartReducer, initialstate);
-  return <CartContext.Provider value={{state:state,dispatch:dispatch}}>
-    {children}
-  </CartContext.Provider>;
+  return (
+    <CartContext.Provider value={{ state: state, dispatch: dispatch }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 export default CartContextProvider;

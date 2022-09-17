@@ -18,13 +18,13 @@ const Product = ({productdetails}) => {
         <div>
             <Link to={`/products/${productdetails.id}`}>Details</Link>
             <div>
+                {quantitycount(state,productdetails.id)> 1 && <button onClick={()=>{dispatch({type:"DECREASE",payload:productdetails})}}>-</button>}  
+                {quantitycount(state,productdetails.id)===1 && <button onClick={()=>{dispatch({type:"REMOVE-ITEM",payload:productdetails})}}><img src={trash} alt="trashicon"/></button>}  
                 {
                   isInCart(state,productdetails.id) ?
                   <button onClick={()=>{dispatch({type:"INCREASE",payload:productdetails})}}>+</button> :
                   <button onClick={()=>{dispatch({type:"ADD-ITEM",payload:productdetails})}}>add to cart</button> 
                 }
-                {quantitycount(state,productdetails.id)> 1 && <button onClick={()=>{dispatch({type:"DECREASE",payload:productdetails})}}>-</button>}  
-                {quantitycount(state,productdetails.id)===1 && <button onClick={()=>{dispatch({type:"REMOVE-ITEM",payload:productdetails})}}><img src={trash} alt="trashicon"/></button>}  
                 
 
             </div>
