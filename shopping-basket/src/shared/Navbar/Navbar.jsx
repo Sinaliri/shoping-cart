@@ -38,7 +38,7 @@ const MainNavbar = () => {
               <Link to="/carts">
                 <div>
                 <img src={shop} alt="shop" />
-                <span>{!state.selectedItems.length ? state.selectedItems.length : state.itemCounter}</span>
+                <span>{state.itemCounter}</span>
                 </div>
               </Link>
 

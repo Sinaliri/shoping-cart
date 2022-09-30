@@ -1,0 +1,29 @@
+.Container{
+    margin-top: 80px 40px;
+    padding: 100px 50px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    margin-top: 20px;
+     
+}
+.imgfluid{
+    margin:0 10px ;
+    display: table;
+    width: 100%;
+    height: 400px;
+}
+.title{
+    color: rgb(16, 16, 16);
+    font-size: 30px;
+}
+.BTS{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-decoration: none;
+    color:#FFABE1 ;
+    font-size: 16px;
+}

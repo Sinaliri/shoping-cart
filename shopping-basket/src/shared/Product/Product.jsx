@@ -7,29 +7,42 @@ import { CartContext } from '../../context/CartContextProvider';
 import { useContext } from 'react';
 //icons
 import trash from "../../assets/icons/trash.svg"
+//react-bootstrap
+import {Button , Card , Col} from 'react-bootstrap';
+//scss file
+import "./Product.scss"
 
 const Product = ({productdetails}) => {
   const {state,dispatch}=useContext(CartContext)
   return (
-    <div>
-        <img src={productdetails.image} alt="productimage" style={{width:"200px"}} />
-        <h3>{shorten(productdetails.title)}</h3>
-        <p>{productdetails.price}</p>
+    <Col XS={12} md={4} lg={3} className="mb-4">
+    <Card style={{width : '250px',heigt:'auto'}} rounded>
+        <Card.Img  variant='top' fluid src={productdetails.image} alt="productimage" style={{width:"90%" , height:"200px"}} className='mx-auto my-4' />
+        <Card.Body style={{backgroundColor:"#C689C6" , color:"#fff"}}>
+
+        <Card.Title className='mt-2 d-flex justify-content-start'>{shorten(productdetails.title)}</Card.Title>
+        <p><span style={{color:"#FFE6F7"}}>Price: </span>{productdetails.price} $</p>
         <div>
-            <Link to={`/products/${productdetails.id}`}>Details</Link>
-            <div>
-                {quantitycount(state,productdetails.id)> 1 && <button onClick={()=>{dispatch({type:"DECREASE",payload:productdetails})}}>-</button>}  
-                {quantitycount(state,productdetails.id)===1 && <button onClick={()=>{dispatch({type:"REMOVE-ITEM",payload:productdetails})}}><img src={trash} alt="trashicon"/></button>}  
+            <Link className="d-block mb-3" style={{
+              textDecoration:0,
+              color:"#FFABE1"
+
+            }} to={`/products/${productdetails.id}`}>Details</Link>
+            <div className="Buttongroup">
+                {quantitycount(state,productdetails.id)> 1 && <Button className='buttonDecrease' onClick={()=>{dispatch({type:"DECREASE",payload:productdetails})}}>-</Button>}  
+                {quantitycount(state,productdetails.id)===1 && <Button className='removeButton' onClick={()=>{dispatch({type:"REMOVE-ITEM",payload:productdetails})}}><img src={trash} alt="trashicon" fluid style={{height:"28px"}}/></Button>}  
                 {
                   isInCart(state,productdetails.id) ?
-                  <button onClick={()=>{dispatch({type:"INCREASE",payload:productdetails})}}>+</button> :
-                  <button onClick={()=>{dispatch({type:"ADD-ITEM",payload:productdetails})}}>add to cart</button> 
+                  <Button className='increaseButton' onClick={()=>{dispatch({type:"INCREASE",payload:productdetails})}}>+</Button> :
+                  <Button className="addToCard" onClick={()=>{dispatch({type:"ADD-ITEM",payload:productdetails})}}>add to cart</Button> 
                 }
                 
 
             </div>
         </div>
-    </div>
+      </Card.Body>
+    </Card>
+  </Col>
   )
 }
 

@@ -1,0 +1,25 @@
+$buttonColor:#FFABE1;
+$buttonColorHover:#937DC2;
+.Buttongroup{
+    display: flex;
+    justify-content: flex-end;
+    .addToCard ,  .buttonDecrease , .removeButton , .increaseButton{
+        padding: 5px 10px;
+        width: auto;
+        height: 30px;
+        margin-left: 10px;
+        border: none;
+        background-color: $buttonColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: width 10s linear;
+        
+       
+    }
+    
+    :hover{
+        background-color: $buttonColorHover !important;
+    }
+
+}

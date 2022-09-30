@@ -8,6 +8,7 @@ const ProductConttextProvider = ({children}) => {
   useEffect(() => {
     const fetchAPI = async () => {
       setProducts(await getProducts());
+      console.log("connected")
     };
 
     fetchAPI();
