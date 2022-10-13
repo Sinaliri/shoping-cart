@@ -4,41 +4,67 @@ import { Link } from "react-router-dom"
 import Cart from '../Cart/Cart';
 //context
 import {CartContext} from '../../context/CartContextProvider'
+//react-bootstrap
+import { Alert , Button, Col , Container , Row } from "react-bootstrap"
+//import scss file
+import "../ShopCart/ShopCart.scss"
 const ShopCart = () => {
     const { state , dispatch }=useContext(CartContext);
     console.log(state.itemCounter)
   return (
-    <div>
+<Container>
+  <Row className='position-relative mt-4'>
+<Col xs={12} md={8}>
+    
         <div>
             {state.selectedItems.map(item => <Cart key={item.id} data={item}/>)}
         </div>
+</Col>
         
         {
           state.itemCounter > 0 && 
-          <div>
+      <Col md={{offset:1 , span:3}}  xs={12} className="sideCalculate rounded-5 border-danger d-flex justify-content-start align-items-start">
+          <div className='sideCalculateMain d-flex justify-content-evenly align-items-start flex-column '>
             <p><span>Total Items:</span> {state.itemCounter}</p>
             <p><span>Total Payments:</span> {state.total}</p>
-            <div>
-              <button onClick={()=>dispatch({type:"CHECKOUT"})}>Check Out</button>
-              <button onClick={()=>dispatch({type:"CLEAR"})}>Clear</button>
+            <div className='checkoutButtonContainer w-100 d-block'>
+              <Button className='me-1' onClick={()=>dispatch({type:"CHECKOUT"})}>Check Out</Button>
+              <Button onClick={()=>dispatch({type:"CLEAR"})}>Clear</Button>
             </div> 
             </div> 
 
-          
-        }
+
+</Col>
+}
         {
           state.checkOut && <div>
-            <h4>checkout Successfully</h4>
-            <Link to="/products">Buy more</Link>
+            <Container className='mt-5'>
+            <Col xs={12}>
+            <Alert variant={"success"} style={{fontSize:'18px'}}>
+              Checkout Successfully
+            <br />
+            <Link className='text-decoration-none' to="/products">Buy more</Link>
+            </Alert>
+            </Col>
+            </Container>
           </div>
         }
         {
-          !state.checkOut && state.itemCounter === 0 && <div>
-            <h3>want to buy</h3>
-            <Link to="/products">Buy more</Link>
-          </div>
+          !state.checkOut && state.itemCounter === 0 && 
+          <Container className='mt-5'>
+          <Col xs={12}>
+          <Alert variant={"success"} style={{fontSize:'18px'}}>
+            Want to buy
+          <br />
+          <Link className='text-decoration-none' to="/products">Buy more</Link>
+          </Alert>
+          </Col>
+          </Container>
+         
         }
-    </div>
+    </Row>
+
+    </Container>
   ) 
 }
 

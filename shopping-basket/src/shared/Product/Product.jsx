@@ -15,10 +15,10 @@ import "./Product.scss"
 const Product = ({productdetails}) => {
   const {state,dispatch}=useContext(CartContext)
   return (
-    <Col XS={12} md={4} lg={3} className="mb-4">
-    <Card style={{width : '250px',heigt:'auto'}} rounded>
+    <Col  XS={12} sm={6} md={4} lg={3}  className="mb-4">
+    <Card className='rounded-4' style={{width : '230px',heigt:'auto'}} >
         <Card.Img  variant='top' fluid src={productdetails.image} alt="productimage" style={{width:"90%" , height:"200px"}} className='mx-auto my-4' />
-        <Card.Body style={{backgroundColor:"#C689C6" , color:"#fff"}}>
+        <Card.Body className='rounded-4' style={{backgroundColor:"#C689C6" , color:"#fff"}}>
 
         <Card.Title className='mt-2 d-flex justify-content-start'>{shorten(productdetails.title)}</Card.Title>
         <p><span style={{color:"#FFE6F7"}}>Price: </span>{productdetails.price} $</p>

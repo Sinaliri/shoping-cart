@@ -1,0 +1,35 @@
+@import "../../variable";
+.CartContainer{
+    height: auto;
+    background-color: $BodyColor;
+    img{
+        width: 100%;
+        height: 160px;
+    }
+    .QuantityCounter{
+        color: $spanColor;
+    }
+    .cartButtonContainer{
+        display: flex;
+        justify-content: space-evenly;
+        
+        Button{
+            border: none;
+            background-color: $buttonColor;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 38px;
+            height:38px;
+            img{
+                width: 25px;
+                height: auto;
+            }
+            
+        }
+        :hover{
+            background-color: $buttonColorHover !important;
+        }
+
+    }
+}
