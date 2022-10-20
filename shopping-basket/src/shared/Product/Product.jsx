@@ -31,6 +31,7 @@ const Product = ({productdetails}) => {
             <div className="Buttongroup">
                 {quantitycount(state,productdetails.id)> 1 && <Button className='buttonDecrease' onClick={()=>{dispatch({type:"DECREASE",payload:productdetails})}}>-</Button>}  
                 {quantitycount(state,productdetails.id)===1 && <Button className='removeButton' onClick={()=>{dispatch({type:"REMOVE-ITEM",payload:productdetails})}}><img src={trash} alt="trashicon" fluid style={{height:"28px"}}/></Button>}  
+                {quantitycount(state,productdetails.id)>0 && <span className='productCounterSpan'>{quantitycount(state,productdetails.id)}</span>}  
                 {
                   isInCart(state,productdetails.id) ?
                   <Button className='increaseButton' onClick={()=>{dispatch({type:"INCREASE",payload:productdetails})}}>+</Button> :
