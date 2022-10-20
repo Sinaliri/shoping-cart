@@ -1,9 +1,44 @@
 @import "../../variable";
+// .shopCartDetail{
+//     height: 92vh;
+//     overflow-y: hidden;
+//     position: relative;
+  
+//     .shopitem{
+//         position: relative;
+//         overflow-Y: scroll;
+        
+//         height: 89vh;
+      
+   
+//     }
+   
+    
+// }
+@media screen and (min-width: 576px) {
+    .shopCartDetail{
+        height: 92vh;
+        overflow-y: hidden;
+        position: relative;
+      
+        .shopitem{
+            position: relative;
+            overflow-Y: scroll;
+            
+            height: 89vh;
+          
+       
+        }
+       
+        
+    }
+        }
+
+
+
 .sideCalculate{
     //background-color: red;
-    height: auto;
     position: fixed;
-    top: 30px;   
     background-color: $sideColor;
     color: $white;
     @media screen and (min-width: 768px) {
@@ -36,6 +71,7 @@
     }
     @media screen and (max-width:768px) {
     width: 100%;
-     position: relative;   
+     position: relative;
+     margin-bottom: 20px;   
     }
 }

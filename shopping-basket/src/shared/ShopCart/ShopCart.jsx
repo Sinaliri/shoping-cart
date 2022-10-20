@@ -12,17 +12,20 @@ const ShopCart = () => {
     const { state , dispatch }=useContext(CartContext);
     console.log(state.itemCounter)
   return (
-<Container>
-  <Row className='position-relative mt-4'>
-<Col xs={12} md={8}>
+<Container className='shopCartDetail'>
+  <Row className='position-relative mt-4 '>
+
+        
+        {
+          state.itemCounter > 0 && 
+          <div>
+
+          <Col xs={12} md={8} className="shopitem">
     
         <div>
             {state.selectedItems.map(item => <Cart key={item.id} data={item}/>)}
         </div>
 </Col>
-        
-        {
-          state.itemCounter > 0 && 
       <Col md={{offset:1 , span:3}}  xs={12} className="sideCalculate rounded-5 border-danger d-flex justify-content-start align-items-start">
           <div className='sideCalculateMain d-flex justify-content-evenly align-items-start flex-column '>
             <p><span>Total Items:</span> {state.itemCounter}</p>
@@ -35,6 +38,7 @@ const ShopCart = () => {
 
 
 </Col>
+          </div>
 }
         {
           state.checkOut && <div>

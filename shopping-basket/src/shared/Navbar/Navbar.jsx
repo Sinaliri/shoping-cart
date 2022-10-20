@@ -16,10 +16,10 @@ const MainNavbar = () => {
            
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
+              <Nav className="me-auto CustomNAV">
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#link"><Link to="/products">Products</Link></Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown title="Contact" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
                     Another action
@@ -35,9 +35,9 @@ const MainNavbar = () => {
             </Navbar.Collapse>
             <Navbar.Brand>
               <Link to="/carts">
-                <div>
+                <div className='basketPic'>
                 <img src={shop} alt="shop" />
-                <Badge bg="info">
+                <Badge className='customBadge d-flex justify-content-center align-items-center'>
                 <span>{state.itemCounter}</span>
                   
                 </Badge>

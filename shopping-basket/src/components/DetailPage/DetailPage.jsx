@@ -24,7 +24,7 @@ const DetailPage = (props) => {
 <Col xs={12} lg={{ span: 5, offset: 1 }} md={{ span: 6, offset: 2 }} className="mt-5 mt-lg-5" >
      <div className="mt-xs-5">
         <h3 className={`${styles.title} mb-4`}>{title}</h3>
-        <p>{description}</p>
+        <p className={`${styles.descc}`}>{description}</p>
         <p><span >Category :</span>{category}</p>
         <div>
           <span>{price} $</span>

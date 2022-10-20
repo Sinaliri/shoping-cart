@@ -2,11 +2,32 @@
 
 .customNavbar{
     background-color: $buttonColorHover;
-    color: #fff !important;
-    Container{
+ 
+}
+.nav-link{
+color: wheat !important;
+a{
+    color: wheat !important;
+    text-decoration: none;
 
-    }
-    Nav{
-        
+}
+}
+.navbar-brand{
+    .basketPic{
+        position: relative;
+        img{
+            width: 30px;
+            height: 25px;
+            color: red;
+        }
+        .customBadge{
+            background-color: $sideColor !important;
+            position: absolute;
+            right: -7px;
+            top: 20px;
+            width: auto;
+            height: 15px;
+            font-size: 10px;
+        }
     }
 }
