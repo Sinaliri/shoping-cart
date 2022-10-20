@@ -27,7 +27,7 @@ const DetailPage = (props) => {
      <div className="mt-xs-5">
         <h3 className="title mb-4">{title}</h3>
         <p className="descc">{description}</p>
-        <p><span >Category :</span>{category}</p>
+        <p><span >Category :</span> {category}</p>
         <div>
           <span>{price} $</span>
           <br />
