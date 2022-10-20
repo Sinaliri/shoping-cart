@@ -16,9 +16,14 @@
         
        
     }
-    
+
     :hover{
         background-color: $buttonColorHover !important;
     }
 
 }
+@media screen and (max-width: 768px) {
+    .customCard{
+        width: 230px !important;
+    }
+    }

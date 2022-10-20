@@ -11,7 +11,7 @@ const MainNavbar = () => {
     console.log(state.ItemCounter)
     console.log(state.selectedItems.length)
     return (
-        <Navbar className='customNavbar' expand="lg">
+        <Navbar className='customNavbar w-100' expand="lg">
           <Container>
            
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

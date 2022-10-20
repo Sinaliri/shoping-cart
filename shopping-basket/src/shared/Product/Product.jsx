@@ -15,8 +15,8 @@ import "./Product.scss"
 const Product = ({productdetails}) => {
   const {state,dispatch}=useContext(CartContext)
   return (
-    <Col  XS={12} sm={6} md={4} lg={3}  className="mb-4">
-    <Card className='rounded-4' style={{width : '230px',heigt:'auto'}} >
+    <Col  XS={12} sm={6} lg={4} xl={3}  className="mb-4 CardCol">
+    <Card className='customCard rounded-4' style={{width : '265px',heigt:'auto'}} >
         <Card.Img  variant='top' fluid src={productdetails.image} alt="productimage" style={{width:"90%" , height:"200px"}} className='mx-auto my-4' />
         <Card.Body className='rounded-4' style={{backgroundColor:"#C689C6" , color:"#fff"}}>
 

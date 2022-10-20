@@ -10,8 +10,8 @@ const Store = () => {
     const products=useContext(ProductsContext)
     console.log(products)
   return (
-    <Container>
-      <Row>
+    <Container className='w-100' >
+      <Row className='w-100'>
           <div className='d-flex justify-content-evenly align-items-center flex-wrap mt-5'  >
               {products.map(item => <Product key={item.id} productdetails={item} />)}
           </div>
